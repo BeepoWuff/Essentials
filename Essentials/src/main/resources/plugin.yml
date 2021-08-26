@@ -207,7 +207,11 @@ commands:
   home:
     description: Teleport to your home.
     usage: /<command> [player:][name]
-    aliases: [ehome,homes,ehomes]
+    aliases: [ehome]
+  homes:
+    description: List your homes.
+    usage: /<command>
+    aliases: [ehomes]
   ice:
     description: Cools a player off.
     usage: /<command> [player]
