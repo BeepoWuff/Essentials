@@ -27,7 +27,7 @@ public class Commandhome extends EssentialsCommand {
     public void run(final Server server, final User user, final String commandLabel, final String[] args) throws Exception {
         final Trade charge = new Trade(this.getName(), ess);
         User player = user;
-        String homeName = "";
+        String homeName = "home";
         final String[] nameParts;
         if (args.length > 0) {
             nameParts = args[0].split(":");
