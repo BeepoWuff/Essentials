@@ -10,6 +10,7 @@ import com.earth2me.essentials.updatecheck.UpdateChecker;
 import net.ess3.nms.refl.providers.ReflOnlineModeProvider;
 import net.ess3.provider.ContainerProvider;
 import net.ess3.provider.FormattedCommandAliasProvider;
+import net.ess3.provider.ItemUnbreakableProvider;
 import net.ess3.provider.KnownCommandsProvider;
 import net.ess3.provider.MaterialTagProvider;
 import net.ess3.provider.PersistentDataProvider;
@@ -18,6 +19,7 @@ import net.ess3.provider.SerializationProvider;
 import net.ess3.provider.SpawnerBlockProvider;
 import net.ess3.provider.SpawnerItemProvider;
 import net.ess3.provider.SyncCommandsProvider;
+import net.ess3.provider.WorldInfoProvider;
 import net.essentialsx.api.v2.services.BalanceTop;
 import net.essentialsx.api.v2.services.mail.MailService;
 import org.bukkit.Server;
@@ -158,6 +160,10 @@ public interface IEssentials extends Plugin {
     PersistentDataProvider getPersistentDataProvider();
 
     ReflOnlineModeProvider getOnlineModeProvider();
+
+    ItemUnbreakableProvider getItemUnbreakableProvider();
+
+    WorldInfoProvider getWorldInfoProvider();
 
     PluginCommand getPluginCommand(String cmd);
 }

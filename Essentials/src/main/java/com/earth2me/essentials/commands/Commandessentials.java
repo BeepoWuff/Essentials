@@ -291,11 +291,11 @@ public class Commandessentials extends EssentialsCommand {
                 }
             }
 
-            if (discord && essDiscord != null && essDiscord.isEnabled()) {
+            if (discord && essDiscord != null) {
                 try {
                     files.add(new PasteUtil.PasteFile("discord-config.yml",
                             new String(Files.readAllBytes(essDiscord.getDataFolder().toPath().resolve("config.yml")), StandardCharsets.UTF_8)
-                                    .replaceAll("[MN][A-Za-z\\d]{23}\\.[\\w-]{6}\\.[\\w-]{27}", "<censored token>")));
+                                    .replaceAll("[A-Za-z\\d]{24}\\.[\\w-]{6}\\.[\\w-]{27}", "<censored token>")));
                 } catch (IOException e) {
                     sender.sendMessage(tl("dumpErrorUpload", "discord-config.yml", e.getMessage()));
                 }

@@ -15,6 +15,7 @@ import org.bukkit.Bukkit;
 import java.time.Instant;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.regex.Pattern;
 
 import static com.earth2me.essentials.I18n.tl;
 
@@ -67,12 +68,19 @@ public class ConsoleInjector extends AbstractAppender {
             return;
         }
 
+        if (!jda.getSettings().getConsoleFilters().isEmpty()) {
+            for (final Pattern pattern : jda.getSettings().getConsoleFilters()) {
+                if (pattern.matcher(entry).find()) {
+                    return;
+                }
+            }
+        }
+
         final String loggerName = event.getLoggerName();
         if (!loggerName.isEmpty() && !loggerName.contains(".")) {
             entry = "[" + event.getLoggerName() + "] " + entry;
         }
 
-        //noinspection UnstableApiUsage
         messageQueue.addAll(Splitter.fixedLength(Message.MAX_CONTENT_LENGTH - 2).splitToList(
                 MessageUtil.formatMessage(jda.getSettings().getConsoleFormat(),
                         TimeFormat.TIME_LONG.format(Instant.now()),
